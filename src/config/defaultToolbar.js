@@ -92,7 +92,7 @@ export default {
     title: undefined,
   },
   colorPicker: {
-    icon: color,
+    icon: 'minimal-dialpad',
     className: undefined,
     component: undefined,
     popupClassName: undefined,

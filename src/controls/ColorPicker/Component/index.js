@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import DixaIcon from '@dixa/react-dixa-icon';
 
 import { stopPropagation } from '../../../utils/common';
 import Option from '../../../components/Option';
@@ -122,10 +123,7 @@ class LayoutComponent extends Component {
           onClick={onExpandEvent}
           className={classNames(className)}
         >
-          <img
-            src={icon}
-            alt=""
-          />
+          <DixaIcon icon={icon} />
         </Option>
         {expanded ? this.renderModal() : undefined}
       </div>
