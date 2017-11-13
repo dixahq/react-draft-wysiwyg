@@ -64,6 +64,8 @@ export default class WysiwygEditor extends Component {
     editorStyle: PropTypes.object,
     wrapperStyle: PropTypes.object,
     uploadCallback: PropTypes.func,
+    publicFileUploadCallback: PropTypes.func,
+    privateFileUploadCallback: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     onTab: PropTypes.func,
@@ -338,7 +340,7 @@ export default class WysiwygEditor extends Component {
     'defaultContentState', 'contentState', 'editorState', 'defaultEditorState', 'locale',
     'localization', 'toolbarOnFocus', 'toolbar', 'toolbarCustomButtons', 'toolbarClassName',
     'editorClassName', 'toolbarHidden', 'wrapperClassName', 'toolbarStyle', 'editorStyle',
-    'wrapperStyle', 'uploadCallback', 'onFocus', 'onBlur', 'onTab', 'mention',
+    'wrapperStyle', 'uploadCallback', 'privateFileUploadCallback', 'publicFileUploadCallback', 'onFocus', 'onBlur', 'onTab', 'mention',
     'quickResponse', 'templateUsageCount', 'renderTemplate', 'hashtag',
     'ariaLabel', 'customBlockRenderFunc', 'customDecorators',
   ]);
@@ -420,6 +422,8 @@ export default class WysiwygEditor extends Component {
       editorStyle,
       wrapperStyle,
       uploadCallback,
+      privateFileUploadCallback,
+      publicFileUploadCallback,
       quickResponse,
       templateUsageCount,
       renderTemplate,
@@ -457,6 +461,10 @@ export default class WysiwygEditor extends Component {
 
             if (opt === 'image' && uploadCallback) {
               config.uploadCallback = uploadCallback;
+            }
+            if (opt === 'file' && privateFileUploadCallback && publicFileUploadCallback) {
+              config.privateFileUploadCallback = privateFileUploadCallback;
+              config.publicFileUploadCallback = publicFileUploadCallback;
             }
             if (opt === 'quickResponse' && quickResponse) {
               config.quickResponse = quickResponse;

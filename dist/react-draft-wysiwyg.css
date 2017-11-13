@@ -926,6 +926,45 @@
 .rdw-image-alignment-options-popup-right {
   right: 0;
 }
+.rdw-file-alignment-options-popup {
+  position: absolute;;
+  background: white;
+  display: flex;
+  padding: 5px 2px;
+  border-radius: 2px;
+  border: 1px solid #F1F1F1;
+  width: 105px;
+  cursor: pointer;
+  z-index: 100;
+}
+.rdw-alignment-option-left {
+  justify-content: flex-start;
+}
+.rdw-file-alignment-option {
+  height: 15px;
+  width: 15px;
+  min-width: 15px;
+}
+.rdw-file-alignment {
+  position: relative;
+}
+.rdw-file-filewrapper {
+  position: relative;
+}
+.rdw-file-center {
+  display: flex;
+  justify-content: center;
+}
+.rdw-file-left {
+  display: flex;
+}
+.rdw-file-right {
+  display: flex;
+  justify-content: flex-end;
+}
+.rdw-file-alignment-options-popup-right {
+  right: 0;
+}
 .rdw-editor-main {
   height: 100%;
   overflow: auto;
