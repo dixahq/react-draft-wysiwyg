@@ -1,19 +1,15 @@
 [ignore]
-.*node_modules*
-.*node_modules/fbjs.*
+.*/node_modules/*/**
+.*/dist/*/**
+.*/coverage/*/**
+.*/.git/*/**
 .*/__test__/*
 ./images/*.svg
 
 [include]
-.*/js/*
 
 [libs]
-./interfaces/mocha.js
-./interfaces/images.js
-./interfaces/CSSModule.js
-./interfaces/draftjs-to-html.js
-./interfaces/draftjs-utils.js
-./node_modules/draft-js
+
 
 [options]
 esproposal.class_static_fields=enable
