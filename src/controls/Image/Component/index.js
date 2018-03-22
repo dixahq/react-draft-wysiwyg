@@ -166,6 +166,7 @@ class LayoutComponent extends Component {
         uploadCallback,
         uploadEnabled,
         urlEnabled,
+        previewImage,
         inputAccept,
         alt: altConf,
       },
@@ -220,7 +221,13 @@ class LayoutComponent extends Component {
                   htmlFor="file"
                   className="rdw-image-modal-upload-option-label"
                 >
-                  {imgSrc || translations['components.controls.image.dropFileText']}
+                  { previewImage && imgSrc
+                    ? <img
+                      src={imgSrc}
+                      alt={imgSrc}
+                      className="rdw-image-modal-upload-option-image-preview"
+                    />
+                    : imgSrc || translations['components.controls.image.dropFileText']}
                 </label>
               </div>
               <input

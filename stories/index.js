@@ -11,6 +11,11 @@ import QuickResponse from './QuickResponse';
 import I18n from './I18n';
 import ToolbarHidden from './ToolbarHidden';
 import ImageUpload from './ImageUpload';
+<<<<<<< Updated upstream
+=======
+import FileUpload from './FileUpload';
+import ImageDataURI from './ImageDataURI';
+>>>>>>> Stashed changes
 import SelectedOptions from './SelectedOptions';
 import FloatingToolbar from './FloatingToolbar';
 import CustomToolbar from './CustomToolbar';
@@ -38,6 +43,11 @@ storiesOf('SelectedOptions', module).add('story', () => <SelectedOptions />);
 storiesOf('CustomToolbar', module).add('story', () => <CustomToolbar />);
 storiesOf('FloatingToolbar', module).add('story', () => <FloatingToolbar />);
 storiesOf('ImageUpload and Alt attribute', module).add('story', () => <ImageUpload />);
+<<<<<<< Updated upstream
+=======
+storiesOf('FileUpload and Alt attribute', module).add('story', () => <FileUpload />);
+storiesOf('Image as data URI and preview', module).add('story', () => <ImageDataURI />);
+>>>>>>> Stashed changes
 storiesOf('ConvertFromRawDraftContent', module).add('story', () => <ConvertFromRawDraftContent />);
 storiesOf('ConvertToRawDraftContent', module).add('story', () => <ConvertToRawDraftContent />);
 storiesOf('ConvertToHTML', module).add('story', () => <ConvertToHTML />);
