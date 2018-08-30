@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Basic from './Basic';
+import DixaIconsTest from './DixaIconsTest';
 import BasicControlled from './BasicControlled';
 import BasicContentState from './BasicContentState';
 import ReadOnly from './ReadOnly';
@@ -28,6 +29,7 @@ import ConvertToRawDraftContent from './ConvertToRawDraftContent';
 import './styles.css';
 
 storiesOf('Basic - uncontrolled', module).add('story', () => <Basic />);
+storiesOf('DixaIconsTest', module).add('story', () => <DixaIconsTest />);
 storiesOf('Basic - controlled', module).add('story', () => <BasicControlled />);
 storiesOf('Basic - content state', module).add('story', () => <BasicContentState />);
 storiesOf('ReadOnly', module).add('story', () => <ReadOnly />);
