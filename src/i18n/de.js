@@ -46,7 +46,7 @@ module.exports = {
   'components.controls.image.byURL': 'URL',
   'components.controls.image.dropFileText': 'Dateien ziehen und ablegen, oder klicken zum Hochladen',
 
-  // Image
+  // File
   'components.controls.file.file': 'File',
   'components.controls.file.fileUpload': 'File Upload',
   'components.controls.file.byURL': 'URL',

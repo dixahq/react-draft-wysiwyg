@@ -1,6 +1,6 @@
 {
   "name": "@dixa/react-draft-wysiwyg",
-  "version": "1.12.13-beta4",
+  "version": "1.12.14",
   "description": "A wysiwyg on top of DraftJS.",
   "main": "dist/react-draft-wysiwyg.js",
   "repository": {
@@ -41,16 +41,16 @@
     "mocha": "^5.0.1",
     "postcss-loader": "^2.0.9",
     "precss": "^3.1.0",
-    "react": "^16.2.0",
-    "react-addons-test-utils": "^15.6.2",
-    "react-dom": "^16.2.0",
-    "react-test-renderer": "^16.2.0",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "react-test-renderer": "^16.3.0",
     "rimraf": "^2.6.2",
     "sinon": "^4.1.2",
     "style-loader": "^0.20.2",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
-    "webpack-bundle-analyzer": "^2.11.1"
+    "webpack-bundle-analyzer": "^2.11.1",
+    "embed-video": "^2.0.4"
   },
   "dependencies": {
     "@dixa/dixa-modern-icons": "^1.0.6",
@@ -63,8 +63,8 @@
   "peerDependencies": {
     "draft-js": "^0.10.x",
     "immutable": "3.x.x || 4.x.x",
-    "react": "0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || 16.x.x",
-    "react-dom": "0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || 16.x.x"
+    "react": "^15.0.0-0 || 15.x.x || ^16.0.0-0 || 16.x.x",
+    "react-dom": "^15.0.0-0 || 15.x.x || ^16.0.0-0 || 16.x.x"
   },
   "scripts": {
     "clean": "rimraf dist",

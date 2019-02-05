@@ -1,26 +1,25 @@
 /* @flow */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import {
   Editor,
   EditorState,
   RichUtils,
   convertToRaw,
   convertFromRaw,
-  CompositeDecorator,
-  AtomicBlockUtils,
-  Modifier,
-} from 'draft-js';
+  CompositeDecorator
+} from "draft-js";
+
 import {
   changeDepth,
   handleNewLine,
   blockRenderMap,
   getCustomStyleMap,
   extractInlineStyle,
-  getEntityRange,
-  getSelectedBlocksType,
-} from 'draftjs-utils';
+  getSelectedBlocksType
+} from "draftjs-utils";
+
 import classNames from 'classnames';
 import ModalHandler from '../event-handler/modals';
 import FocusHandler from '../event-handler/focus';
@@ -129,7 +128,7 @@ export default class WysiwygEditor extends Component {
       props.customBlockRenderFunc
     );
     this.editorProps = this.filterEditorProps(props);
-    this.customStyleMap = getCustomStyleMap();
+    this.customStyleMap = this.getStyleMap(props);
   }
 
   componentWillMount(): void {
@@ -195,7 +194,7 @@ export default class WysiwygEditor extends Component {
     }
     this.setState(newState);
     this.editorProps = this.filterEditorProps(props);
-    this.customStyleMap = getCustomStyleMap();
+    this.customStyleMap = this.getStyleMap(props);
   }
 
   onEditorBlur: Function = (): void => {
@@ -266,7 +265,7 @@ export default class WysiwygEditor extends Component {
       if (onEditorStateChange) {
         onEditorStateChange(editorState, this.props.wrapperId);
       }
-      if (!hasProperty(this.props, 'editorState')) {
+      if (!hasProperty(this.props, "editorState")) {
         this.setState({ editorState }, this.afterChange(editorState));
       } else {
         this.afterChange(editorState);
@@ -391,6 +390,8 @@ export default class WysiwygEditor extends Component {
       }
     });
   };
+
+  getStyleMap = props => ({ ...getCustomStyleMap(), ...props.customStyleMap });
 
   isReadOnly = () => this.props.readOnly;
 
@@ -751,7 +752,7 @@ export default class WysiwygEditor extends Component {
     return (
       <div
         id={this.wrapperId}
-        className={classNames(wrapperClassName, 'rdw-editor-wrapper')}
+        className={classNames(wrapperClassName, "rdw-editor-wrapper")}
         style={wrapperStyle}
         onClick={this.modalHandler.onEditorClick}
         onBlur={this.onWrapperBlur}
@@ -811,7 +812,7 @@ export default class WysiwygEditor extends Component {
             handlePastedText={this.handlePastedText}
             blockRendererFn={this.blockRendererFn}
             handleKeyCommand={this.handleKeyCommand}
-            ariaLabel={ariaLabel || 'rdw-editor'}
+            ariaLabel={ariaLabel || "rdw-editor"}
             blockRenderMap={blockRenderMap}
             handlePastedFiles={this.handlePastedFiles}
             handleDroppedFiles={this.handleDroppedFiles}

@@ -1,26 +1,26 @@
-import bold from '../../docs/svg/bold.svg';
-import italic from '../../docs/svg/italic.svg';
-import monospace from '../../docs/svg/code.svg';
+import bold from '../../images/bold.svg';
+import italic from '../../images/italic.svg';
+import monospace from '../../images/code.svg';
 import fontSize from '../../images/font-size.svg';
-import ordered from '../../docs/svg/list-ul.svg';
-import unordered from '../../docs/svg/list-ol.svg';
+import ordered from '../../images/list-unordered.svg';
+import unordered from '../../images/list-ordered.svg';
 import left from '../../images/align-left.svg';
 import center from '../../images/align-center.svg';
 import right from '../../images/align-right.svg';
 import justify from '../../images/align-justify.svg';
 import color from '../../images/color.svg';
 import eraser from '../../images/eraser.svg';
-import link from '../../docs/svg/link.svg';
-import unlink from '../../docs/svg/unlink.svg';
-import emoji from '../../docs/svg/smile.svg';
+import link from '../../images/link.svg';
+import unlink from '../../images/unlink.svg';
+import emoji from '../../images/smile.svg';
 import embedded from '../../images/embedded.svg';
 import image from '../../images/image.svg';
 import undo from '../../images/undo.svg';
 import redo from '../../images/redo.svg';
 import subscript from '../../images/subscript.svg';
 import superscript from '../../images/superscript.svg';
-import fastMessage from '../../docs/svg/bolt.svg';
-import upload from '../../docs/svg/upload.svg';
+import fastMessage from '../../images/bolt.svg';
+import upload from '../../images/upload.svg';
 
 // import Icon from '@dixa/dixa-modern-icons';
 

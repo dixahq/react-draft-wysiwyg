@@ -8,11 +8,8 @@ import {
   getEntityRange,
   getSelectionEntity,
 } from 'draftjs-utils';
-import linkifyIt from 'linkify-it';
 
 import LayoutComponent from './Component';
-
-const linkify = linkifyIt();
 
 class Link extends Component {
   static propTypes = {
@@ -58,11 +55,12 @@ class Link extends Component {
     this.signalExpanded = !this.state.expanded;
   };
 
-  onChange = (action, title, target, targetOption) => {
+  onChange = (action: *, title: *, target: *, targetOption: *) => {
+    const { config: { beforeAddLink } } = this.props;
+
     if (action === 'link') {
-      const links = linkify.match(target);
-      const linkifiedTarget = links && links[0] ? links[0].url : '';
-      this.addLink(title, linkifiedTarget, targetOption);
+      const link = beforeAddLink({ action, title, target, targetOption });
+      this.addLink(link.title, link.target, link.targetOption);
     } else {
       this.removeLink();
     }
@@ -109,10 +107,18 @@ class Link extends Component {
     let selection = editorState.getSelection();
     if (currentEntity) {
       const entityRange = getEntityRange(editorState, currentEntity);
-      selection = selection.merge({
-        anchorOffset: entityRange.start,
-        focusOffset: entityRange.end,
-      });
+      const isBackward = selection.getIsBackward();
+      if (isBackward) {
+        selection = selection.merge({
+          anchorOffset: entityRange.end,
+          focusOffset: entityRange.start,
+        });
+      } else {
+        selection = selection.merge({
+          anchorOffset: entityRange.start,
+          focusOffset: entityRange.end,
+        });
+      }
       onChange(RichUtils.toggleLink(editorState, selection, null));
     }
   };
@@ -124,10 +130,18 @@ class Link extends Component {
 
     if (currentEntity) {
       const entityRange = getEntityRange(editorState, currentEntity);
-      selection = selection.merge({
-        anchorOffset: entityRange.start,
-        focusOffset: entityRange.end,
-      });
+      const isBackward = selection.getIsBackward();
+      if (isBackward) {
+        selection = selection.merge({
+          anchorOffset: entityRange.end,
+          focusOffset: entityRange.start,
+        });
+      } else {
+        selection = selection.merge({
+          anchorOffset: entityRange.start,
+          focusOffset: entityRange.end,
+        });
+      }
     }
     const entityKey = editorState
       .getCurrentContent()
