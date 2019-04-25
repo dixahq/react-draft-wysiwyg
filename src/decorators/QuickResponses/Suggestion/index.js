@@ -176,6 +176,11 @@ function getSuggestionComponent() {
       });
     }
 
+    onClick = (event) => {
+      event.stopPropagation();
+      this.addQuickResponse();
+    }
+
     setSuggestionReference: Function = (ref: Object): void => {
       this.suggestion = ref;
     };
@@ -271,7 +276,7 @@ function getSuggestionComponent() {
                   key={index}
                   type="button"
                   spellCheck={false}
-                  onClick={this.addQuickResponse}
+                  onClick={this.onClick}
                   data-index={index}
                   value={index}
                   onMouseEnter={this.onOptionMouseEnter}
