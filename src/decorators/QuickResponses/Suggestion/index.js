@@ -205,42 +205,43 @@ function getSuggestionComponent() {
     }
 
     addQuickResponse = (index = null) => {
+      const quickResponseText = this.props.children[0].props.text.substr(1);
       const activeIndex = (index && typeof index === 'string' ? index : this.state.activeOption);
       const suggestion = this.filteredSuggestions[activeIndex];
       const { renderTemplate } = config;
 
       // Quick response render.
       if (renderTemplate && typeof renderTemplate === 'function') {
-        this.renderTemplate({ suggestion, index: activeIndex });
+        this.renderTemplate({ suggestion, index: activeIndex, quickResponseText });
       } else {
-        this.addSuggestion({ suggestion, index: activeIndex });
+        this.addSuggestion({ suggestion, index: activeIndex, quickResponseText });
       }
     }
 
-    addSuggestion: Function = (payload: {suggestion: *, index: number}): void => {
-      const { suggestion } = payload;
+    addSuggestion: Function = (payload: {suggestion: *, index: number, quickResponseText: string }): void => {
+      const { suggestion, quickResponseText } = payload;
       const editorState = config.getEditorState();
       const { onChange, separator, trigger, templateUsageCount } = config;
 
-      addQuickResponse(editorState, onChange, separator, trigger, suggestion);
+      addQuickResponse(editorState, onChange, separator, trigger, suggestion, quickResponseText);
 
       if (templateUsageCount && typeof templateUsageCount === 'function') {
         templateUsageCount();
       }
     }
 
-    renderTemplate: Function = (payload: {suggestion: *, index: number}): void => {
-      const { index, suggestion } = payload;
+    renderTemplate: Function = (payload: {suggestion: *, index: number, quickResponseText: string }): void => {
+      const { index, suggestion, quickResponseText } = payload;
       const { renderTemplate } = config;
       const suggestionCopy = Object.assign({}, suggestion);
       renderTemplate({ content: suggestion.value, subject: suggestion.subject })
         .then((response) => {
           suggestionCopy.value = response.data.rendered_content;
-          this.addSuggestion({ suggestion: suggestionCopy, index });
+          this.addSuggestion({ suggestion: suggestionCopy, index, quickResponseText });
         })
         .catch((exception) => {
           console.warn('renderTemplate exception', exception);
-          this.addSuggestion({ suggestion, index });
+          this.addSuggestion({ suggestion, index, quickResponseText });
         });
     }
 

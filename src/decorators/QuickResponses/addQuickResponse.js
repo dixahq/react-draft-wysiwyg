@@ -10,6 +10,7 @@ export default function addQuickResponse(
   separator: string,
   trigger: string,
   suggestion: Object,
+  quickResponseText: String,
 ): void {
   const { value } = suggestion;
   const entityKey = editorState
@@ -20,24 +21,22 @@ export default function addQuickResponse(
   const selectedBlockText = selectedBlock.getText();
   const lastIndexOfTrigger = selectedBlockText.lastIndexOf(trigger);
   const index = lastIndexOfTrigger === -1 ? 0 : lastIndexOfTrigger;
-  let focusOffset;
+
   let spaceAlreadyPresent = false;
-  if (selectedBlockText.length === index + 1) {
-    focusOffset = selectedBlockText.length;
-  } else {
-    focusOffset = editorState.getSelection().focusOffset;
-  }
+  const focusOffset = quickResponseText.length + 1;
+
   if (selectedBlockText[focusOffset] === ' ') {
     spaceAlreadyPresent = true;
   }
+
   let updatedSelection = editorState.getSelection().merge({
     anchorOffset: index,
-    focusOffset,
+    focusOffset: focusOffset + index,
   });
   let newEditorState = EditorState.acceptSelection(editorState, updatedSelection);
   let contentState = Modifier.replaceText(
     newEditorState.getCurrentContent(),
-    updatedSelection,
+    newEditorState.getSelection(),
     `${value}`,
     newEditorState.getCurrentInlineStyle(),
     entityKey,
